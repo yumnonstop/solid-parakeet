@@ -1,0 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PieceType1 : MonoBehaviour {
+
+    //Path Storage Arrays
+    Vector3[] path1;
+    Vector3[] path2;
+    Vector3[] path3;
+    Vector3[] path4;
+
+    GameObject lipid1;
+    GameObject lipid2;
+    GameObject lipid3;
+    GameObject lipid4;
+
+
+    void LoadPaths()
+    {
+        path1 = iTweenPath.GetPath("New Path 2");
+        path2 = iTweenPath.GetPath("New Path 1");
+    }
+
+
+
+    // Use this for initializations
+    void Start()
+    {
+        lipid1 = transform.Find("LipidMoleculeU2").gameObject;
+        lipid2 = transform.Find("LipidMoleculeU4").gameObject;
+
+        LoadPaths();
+
+        iTween.MoveTo(lipid1, iTween.Hash("path", path1, "time", 11, "easetype", iTween.EaseType.easeInOutSine, "islocal", true, "movetopath", false, "looptype", "loop"));
+        iTween.MoveTo(lipid2, iTween.Hash("path", path2, "time", 11, "easetype", iTween.EaseType.easeInOutSine, "islocal", true, "movetopath", false, "looptype", "loop"));
+        // iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath("New Path 1"), "time", 5, "easetype", iTween.EaseType.easeInOutSine, "islocal", true, "looptype", "loop"));
+
+
+
+    }
+
+    // Update is called once per frame
+    void Update () {
+		
+	}
+}
