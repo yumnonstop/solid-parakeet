@@ -1,0 +1,58 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class H2O : MonoBehaviour
+{
+
+    public Transform target;
+    public float speed;
+    float dist;
+    bool close;
+
+
+    // Use this for initialization
+    void Start()
+    {
+        speed = 0.3f;
+        target = GameObject.Find("H2O").transform;
+        close = false;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        dist = Vector3.Distance(target.position, transform.position);
+        print("Distance to other: " + dist);
+
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        check();
+        move();
+    }
+
+
+    void check()
+    {
+        if (dist <= 0.8f)
+        {
+            close = true;
+        }
+        else if (dist >= 1.1f)
+        {
+            close = false;
+        }
+    }
+
+    void move()
+    {
+        float step = speed * Time.deltaTime;
+        if (close)
+            transform.position = Vector3.MoveTowards(transform.position, target.position, -step);
+        else
+            transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+
+    }
+
+
+}
