@@ -1,0 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PathU2 : MonoBehaviour {
+    
+    // Use this for initialization
+    void Start()
+    {
+        iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath("New Path 2"), "movetopath", false, "time", 8, "lookahead", 0.001f, "easetype", iTween.EaseType.easeInOutSine, "islocal", true, "looptype", "loop"));
+    }
+}
