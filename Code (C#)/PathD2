@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PathD2 : MonoBehaviour {
+    Vector3[] pathStorage;
+
+    // Use this for initialization
+    void Start () {
+      //iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath("New Path 3"), "movetopath", false, "time", 8, "easetype", iTween.EaseType.easeInOutSine, "looptype", "loop"));
+
+        iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath("New Path 3"), "movetopath", false, "time", 8, "lookahead", 0.001f, "easetype", iTween.EaseType.easeInOutSine, "islocal", true, "looptype", "loop"));
+    
+}
+
+    // Update is called once per frame
+    void Update () {
+		
+	}
+}
