@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PrefabLoad : MonoBehaviour
+{
+    public GameObject MotionPrefab;
+    public GameObject RotationPrefab;
+
+    void Start()
+    {
+
+        var MotionPrefab = Resources.Load("Prefabs/Motion") as GameObject;
+        var RotationPrefab = Resources.Load("Prefabs/Rotation") as GameObject;
+
+        var Motion = GameObject.Instantiate(MotionPrefab);
+
+        var Rotation = GameObject.Instantiate(RotationPrefab);
+
+         for (int x = 0; x < 10; x += 2)
+        {      
+           for (int z = 1; z < 10; z += 2)
+            {
+                Instantiate(Rotation, new Vector3(x, 0, z), Quaternion.identity);
+                Instantiate(Motion, new Vector3(x, 0, z), Quaternion.identity);
+            }
+        }
+    }
+
+
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+    
+}
